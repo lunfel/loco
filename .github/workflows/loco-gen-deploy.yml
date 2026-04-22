@@ -1,3 +1,7 @@
+# Daily sanity check: Verifies that 'loco new' successfully scaffolds a project,
+# 'generate deployment docker' creates a valid Dockerfile, and the resulting image
+# builds without errors. This ensures the onboarding and deployment flow remains
+# functional as the framework evolves.
 name: "[loco-gen-deploy]"
 on:
   schedule:
@@ -40,7 +44,7 @@ jobs:
         run: |
           loco new -n myapp --db sqlite --bg async --assets serverside -a
 
-      - name:
+      - name: generate deployment and build
         run: cargo loco generate deployment docker && docker build -t demo .
         working-directory: ./myapp
 
