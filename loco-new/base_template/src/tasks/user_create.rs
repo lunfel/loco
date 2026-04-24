@@ -51,7 +51,7 @@ impl Task for UserCreate {
                     "could not create user via task"
                 );
                 return Err(Error::string(
-                    &format!("Failed to create user. err: {err}",),
+                    &format!("Failed to create user. err: {err}"),
                 ));
             }
         };
